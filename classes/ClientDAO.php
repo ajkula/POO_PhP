@@ -101,7 +101,7 @@ class ClientDAO implements IDAO {
                     $dto->getMotDePasse()
                     ]);
                     if ($success) {
-                        $dto->getClientId($this->pdo->lastInsertId());
+                        $dto->setClientId($this->pdo->lastInsertId());
                         return $dto;
                     } else {
                     return $success;    

@@ -14,10 +14,12 @@ $dao = new ClientDAO($pdo);
 
 
 $dtoClient = new ClientDTO();
+$dtoClient ->setNom('Barbara')
+           ->setEmail('email@vache.com')
+        ->setMotDePasse('papasse');
 
-$dtoClient->setNom("les huitres")
-        ->setEmail("popo@areuuuuh.fr")
-        ->setMotDePasse("azer");
+
+
 
 var_dump($dao->save($dtoClient));
 
