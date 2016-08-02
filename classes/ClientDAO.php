@@ -95,11 +95,17 @@ class ClientDAO implements IDAO {
     private function insert($dto){
         $sql = "INSERT INTO clients (nom, email, mot_de_passe) VALUES (?,?,?)";
             $statement = $this->pdo->prepare($sql);
-            return $statement->execute([
+            $success = $statement->execute([
                     $dto->getNom(),
                     $dto->getEmail(),
                     $dto->getMotDePasse()
                     ]);
+                    if ($success) {
+                        $dto->getClientId($this->pdo->lastInsertId());
+                        return $dto;
+                    } else {
+                    return $success;    
+                    }
     }
     
     private function update($dto){
